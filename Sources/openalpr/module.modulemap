@@ -1,0 +1,11 @@
+module OpenAlprLinux [system] {
+    umbrella header "/usr/include/openalprgo.h"
+    link "openalpr"
+    export *
+}
+
+module OpenAlprMac [system] {
+    umbrella header "/usr/local/include/openalprgo.h"
+    link "openalpr"
+    export *
+}
