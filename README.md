@@ -21,7 +21,7 @@ So the keyword is: _convenience_, and _usability_. Which is straight the opposit
 
 You don't have to worry about importing the right version of the wrapper for your OS, it's handled via a directive in the wrapper.
 
-```Swift
+```swift
 import Foundation
 
 var country = "us"
