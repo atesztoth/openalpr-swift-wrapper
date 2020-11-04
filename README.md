@@ -2,7 +2,7 @@
 
 ## Motivation
 I just wanted to use OpenALPR... It turned out to be a rather long and painful process to somehow make this work.
-It's here so you won't have to go through it yourself. _Keep it, hold it, love it._
+It's here so you won't have to go through it yourself. _Take it, hold it, love it._
 
 https://www.youtube.com/watch?v=uZwHVCqdT7c
 
