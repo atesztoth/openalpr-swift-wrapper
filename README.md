@@ -5,15 +5,18 @@ I just wanted to use OpenALPR... It turned out to be a rather long and painful p
 It's here so you won't have to go through it yourself. Keep it, hold it, love it.
 
 # Contents
-It's a very simple package to be honest. It's dependent on my other package, which is only exposed via GitLab. I prefer that.
+It's a very simple package to be honest. It is required that you install OpenALPR (https://github.com/openalpr/openalpr) on your machine
+yourself, then in theory this wrapper should be able to build and be ready to be used.
+
 It exposes a class called `OpenALPR` which you can import and use the C api through. It gives you conveiently usable methods,
-for example `recogniseBy(data:)` so you don't have to worry about converting the bytes into the appropriate form for the C API.
+for example `recogniseBy(data:)` so you don't have to worry about converting the bytes into the appropriate form for the C API,
+also it gives you more _Swifty_ typed return values, no _char *_.
 
 Actually it has two methods:
 - `recogniseBy(data:)`
 - `recogniseBy(filePath:)`.
 
-Also, you can set how many plates you want it to discover at max.
+Also, you can set how many plates you want it to discover at max. You can see an example of that below.
 
 So the keyword is: _convenience_, and _usability_. Which is straight the opposite that we can say about the C api and `OpenAlprWrapper` of mine.
 
