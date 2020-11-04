@@ -2,7 +2,9 @@
 
 ## Motivation
 I just wanted to use OpenALPR... It turned out to be a rather long and painful process to somehow make this work.
-It's here so you won't have to go through it yourself. Keep it, hold it, love it.
+It's here so you won't have to go through it yourself. _Keep it, hold it, love it._
+
+https://www.youtube.com/watch?v=uZwHVCqdT7c
 
 # Contents
 It's a very simple package to be honest. It is required that you install OpenALPR (https://github.com/openalpr/openalpr) on your machine
