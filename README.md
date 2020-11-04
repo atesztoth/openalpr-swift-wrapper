@@ -2,7 +2,7 @@
 
 ## Motivation
 I just wanted to use OpenALPR... It turned out to be a rather long and painful process to somehow make this work.
-It's here so you won't have to go through this again. Use it with fun!
+It's here so you won't have to go through it yourself. Keep it, hold it, love it.
 
 # Contents
 It's a very simple package to be honest. It's dependent on my other package, which is only exposed via GitLab. I prefer that.
