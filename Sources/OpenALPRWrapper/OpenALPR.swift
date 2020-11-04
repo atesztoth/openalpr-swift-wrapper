@@ -36,7 +36,8 @@ class OpenALPR {
     
     @OneOrMore public var maxRecognisablePlateCount {
         didSet {
-            SetTopN(self.alprInstance, Int32(maxRecognisablePlateCount))
+            SetTopN(alprInstance, Int32(maxRecognisablePlateCount))
+            print("Max recognisable plate number has been canged from \(oldValue) to \(maxRecognisablePlateCount)")
         }
     }
     
@@ -59,9 +60,8 @@ class OpenALPR {
     }
     
     func recogniseBy(filePath: String) -> String {
-        var buffer = Array(filePath.utf8CString)
-        buffer.append(0)
-        let results = RecognizeByFilePath(alprInstance, &buffer)!
+        var cFilePath = filePath.usableCString
+        let results = RecognizeByFilePath(alprInstance, &cFilePath)!
         return String(cString: results)
     }
 
