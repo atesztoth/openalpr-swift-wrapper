@@ -8,7 +8,7 @@ https://www.youtube.com/watch?v=uZwHVCqdT7c
 
 # Contents
 It's a very simple package to be honest. It is required that you install OpenALPR (https://github.com/openalpr/openalpr) on your machine
-yourself, then in theory this wrapper should be able to build and be ready to be used.
+yourself, than in theory this wrapper should work _Out of the box™️_.
 
 It exposes a class called `OpenALPR` which you can import and use the C api through. It gives you conveiently usable methods,
 for example `recogniseBy(data:)` so you don't have to worry about converting the bytes into the appropriate form for the C API,
@@ -56,4 +56,4 @@ RunLoop.main.run()
 ```
 
 # Pkg managers
-Yet only Swift Package Manager is supported. PR's are welcome.
+Yet only Swift Package Manager is supported. PRs are welcome.
