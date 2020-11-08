@@ -34,6 +34,8 @@ struct OneOrMore {
 
 class OpenALPR {
     
+    // MARK: - Properties
+    
     @OneOrMore public var maxRecognisablePlateCount {
         didSet {
             SetTopN(alprInstance, Int32(maxRecognisablePlateCount))
@@ -45,6 +47,8 @@ class OpenALPR {
     private var configFile: String
     private var runtimeFilesLocation: String
     private var alprInstance: Alpr
+    
+    // MARK: - Initializer
     
     init(countryCode: String, configFile: String, runtimeFilesLocation: String) {
         self.countryCode = countryCode
@@ -59,20 +63,24 @@ class OpenALPR {
         SetTopN(alprInstance, 1)
     }
     
-    func recogniseBy(filePath: String) -> String {
+    // MARK: - Methods
+    
+    func recogniseBy(filePath: String) throws -> RecognitionResult {
         var cFilePath = filePath.usableCString
         let results = RecognizeByFilePath(alprInstance, &cFilePath)!
-        return String(cString: results)
+        let stringResults = String(cString: results).data(using: .utf8)!
+        return try JSONDecoder().decode(RecognitionResult.self, from: stringResults)
     }
 
     
-    func recogniseBy(data: Data) -> String {
+    func recogniseBy(data: Data) throws -> RecognitionResult {
         var int8ImageBytes = data.reduce(into: []) { $0.append($1) } .map { Int8(bitPattern: $0) }
         let uint8Pointer = UnsafeMutablePointer<Int8>.allocate(capacity: int8ImageBytes.count)
         uint8Pointer.initialize(from: &int8ImageBytes, count: int8ImageBytes.count)
 
         let results = RecognizeByBlob(self.alprInstance, uint8Pointer, Int32(int8ImageBytes.count * MemoryLayout<UInt8>.size))
         
-        return String(cString: results!)
+        let stringResults = String(cString: results!).data(using: .utf8)!
+        return try JSONDecoder().decode(RecognitionResult.self, from: stringResults)
     }
 }

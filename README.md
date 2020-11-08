@@ -44,12 +44,12 @@ URLSession.shared.dataTask(with: url) { (data, response, error) in
     if error != nil { fatalError(error.debugDescription) }
     guard data != nil else { fatalError("Downloaded data was nil, and its not allowed in this example") }
 
-    let results = alprWrapper.recogniseBy(data: data!)
+    let results = try! alprWrapper.recogniseBy(data: data!)
     print("Result from downloaded IMAGE:")
     print(results)
 }.resume()
 
-let results2 = alprWrapper.recogniseBy(filePath: "/Users/atesztoth/h786poj.jpg")
+let results2 = try! alprWrapper.recogniseBy(filePath: "/Users/atesztoth/h786poj.jpg")
 print(results2)
 
 RunLoop.main.run()
