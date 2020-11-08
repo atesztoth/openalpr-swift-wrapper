@@ -32,7 +32,7 @@ struct OneOrMore {
     }
 }
 
-public class OpenALPR {
+open class OpenALPR {
     
     // MARK: - Properties
     
@@ -50,7 +50,7 @@ public class OpenALPR {
     
     // MARK: - Initializer
     
-    init(countryCode: String, configFile: String, runtimeFilesLocation: String) {
+    public init(countryCode: String, configFile: String, runtimeFilesLocation: String) {
         self.countryCode = countryCode
         self.configFile = configFile
         self.runtimeFilesLocation = runtimeFilesLocation
