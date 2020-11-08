@@ -1,19 +1,19 @@
 
 import Foundation
 
-struct RegionsOfInterest: Codable {
+public struct RegionsOfInterest: Codable {
     let x: UInt
     let y: UInt
     let width: UInt
     let height: UInt
 }
 
-struct Coorindate: Codable {
+public struct Coorindate: Codable {
     let x: UInt
     let y: UInt
 }
 
-struct Candidate: Codable {
+public struct Candidate: Codable {
     let plate: String
     let confidence: Double
     let matchesTemplate: UInt
@@ -24,7 +24,7 @@ struct Candidate: Codable {
         case plate = "plate"
     }
     
-    init(from decoder: Decoder) throws {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CustomMappingKey.self)
         matchesTemplate = try container.decode(UInt.self, forKey: .matchesTemplate)
         confidence = try container.decode(Double.self, forKey: .confidence)
@@ -32,7 +32,7 @@ struct Candidate: Codable {
     }
 }
 
-struct PlateResult: Codable {
+public struct PlateResult: Codable {
     let plate: String
     let confidence: Double
     let matchesTemplate: UInt
@@ -55,7 +55,7 @@ struct PlateResult: Codable {
         case coordinates = "coordinates"
     }
     
-    init(from decoder: Decoder) throws {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CustomMappingKey.self)
         plate = try container.decode(String.self, forKey: .plate)
         confidence = try container.decode(Double.self, forKey: .confidence)
@@ -70,7 +70,7 @@ struct PlateResult: Codable {
 }
 
 
-struct RecognitionResult: Codable {
+public struct RecognitionResult: Codable {
     let version: UInt
     let dataType: String
     let epochTime: UInt
@@ -91,7 +91,7 @@ struct RecognitionResult: Codable {
         case results = "results"
     }
     
-    init(from decoder: Decoder) throws {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CustomMappingKey.self)
         version = try container.decode(UInt.self, forKey: .version)
         dataType = try container.decode(String.self, forKey: .dataType)

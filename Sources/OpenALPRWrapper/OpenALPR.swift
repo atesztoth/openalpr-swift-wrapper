@@ -32,7 +32,7 @@ struct OneOrMore {
     }
 }
 
-class OpenALPR {
+open class OpenALPR {
     
     // MARK: - Properties
     
