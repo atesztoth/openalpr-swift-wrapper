@@ -65,7 +65,7 @@ open class OpenALPR {
     
     // MARK: - Methods
     
-    func recogniseBy(filePath: String) throws -> RecognitionResult {
+    public func recogniseBy(filePath: String) throws -> RecognitionResult {
         var cFilePath = filePath.usableCString
         let results = RecognizeByFilePath(alprInstance, &cFilePath)!
         let stringResults = String(cString: results).data(using: .utf8)!
@@ -73,7 +73,7 @@ open class OpenALPR {
     }
 
     
-    func recogniseBy(data: Data) throws -> RecognitionResult {
+    public func recogniseBy(data: Data) throws -> RecognitionResult {
         var int8ImageBytes = data.reduce(into: []) { $0.append($1) } .map { Int8(bitPattern: $0) }
         let uint8Pointer = UnsafeMutablePointer<Int8>.allocate(capacity: int8ImageBytes.count)
         uint8Pointer.initialize(from: &int8ImageBytes, count: int8ImageBytes.count)
