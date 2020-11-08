@@ -80,6 +80,8 @@ open class OpenALPR {
 
         let results = RecognizeByBlob(self.alprInstance, uint8Pointer, Int32(int8ImageBytes.count * MemoryLayout<UInt8>.size))
         
+        uint8Pointer.deallocate()
+        
         let stringResults = String(cString: results!).data(using: .utf8)!
         return try JSONDecoder().decode(RecognitionResult.self, from: stringResults)
     }
