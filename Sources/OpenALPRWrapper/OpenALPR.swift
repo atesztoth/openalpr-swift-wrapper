@@ -65,15 +65,19 @@ open class OpenALPR {
     
     // MARK: - Methods
     
-    public func recogniseBy(filePath: String) throws -> RecognitionResult {
+    public func recogniseBy(filePath: String) throws -> String {
         var cFilePath = filePath.usableCString
         let results = RecognizeByFilePath(alprInstance, &cFilePath)!
-        let stringResults = String(cString: results).data(using: .utf8)!
+        return String(cString: results)
+    }
+    
+    public func recogniseBy(filePath: String) throws -> RecognitionResult {
+        let stringResults = try! recogniseBy(filePath: filePath).data(using: .utf8)!
         return try JSONDecoder().decode(RecognitionResult.self, from: stringResults)
     }
 
     
-    public func recogniseBy(data: Data) throws -> RecognitionResult {
+    public func recogniseBy(data: Data) throws -> String {
         var int8ImageBytes = data.reduce(into: []) { $0.append($1) } .map { Int8(bitPattern: $0) }
         let uint8Pointer = UnsafeMutablePointer<Int8>.allocate(capacity: int8ImageBytes.count)
         uint8Pointer.initialize(from: &int8ImageBytes, count: int8ImageBytes.count)
@@ -82,7 +86,11 @@ open class OpenALPR {
         
         uint8Pointer.deallocate()
         
-        let stringResults = String(cString: results!).data(using: .utf8)!
-        return try JSONDecoder().decode(RecognitionResult.self, from: stringResults)
+        return String(cString: results!)
+    }
+    
+    public func recogniseBy(data: Data) throws -> RecognitionResult {
+        let stringResults: String = try! self.recogniseBy(data: data)
+        return try JSONDecoder().decode(RecognitionResult.self, from: stringResults.data(using: .utf8)!)
     }
 }
