@@ -75,17 +75,16 @@ open class OpenALPR {
         let stringResults = try! recogniseBy(filePath: filePath).data(using: .utf8)!
         return try JSONDecoder().decode(RecognitionResult.self, from: stringResults)
     }
-
+    
     
     public func recogniseBy(data: Data) throws -> String {
+        defer { uint8Pointer.deallocate() }
+        
         var int8ImageBytes = data.reduce(into: []) { $0.append($1) } .map { Int8(bitPattern: $0) }
         let uint8Pointer = UnsafeMutablePointer<Int8>.allocate(capacity: int8ImageBytes.count)
         uint8Pointer.initialize(from: &int8ImageBytes, count: int8ImageBytes.count)
-
+        
         let results = RecognizeByBlob(self.alprInstance, uint8Pointer, Int32(int8ImageBytes.count * MemoryLayout<UInt8>.size))
-        
-        uint8Pointer.deallocate()
-        
         return String(cString: results!)
     }
     
