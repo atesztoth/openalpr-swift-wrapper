@@ -1,18 +1,18 @@
 # Swift - OpenALPR
 
 ## Motivation
-I just wanted to use OpenALPR... It turned out to be a rather long and painful process to somehow make this work.
-It's here so you won't have to go through it yourself. _Take it, hold it, love it._
-
-https://www.youtube.com/watch?v=uZwHVCqdT7c
+I needed to use OpenALPR as a sub-module of a project of mine,
+hence this wrapper was born.
 
 # Contents
-It's a very simple package to be honest. It is required that you install OpenALPR (https://github.com/openalpr/openalpr) on your machine
-yourself, than in theory this wrapper should work _Out of the box™️_.
+It's a very simple package to be honest.
+In order to make it build, OpenALPR (https://github.com/openalpr/openalpr) 
+should be installed on your machine.
 
-It exposes a class called `OpenALPR` which you can import and use the C api through. It gives you conveiently usable methods,
-for example `recogniseBy(data:)` so you don't have to worry about converting the bytes into the appropriate form for the C API,
-also it gives you more _Swifty_ typed return values, no _char *_.
+It exposes a class called `OpenALPR` which you can import and use the C api through.
+It gives you conveiently usable methods, for example `recogniseBy(data:)`
+so you don't have to worry about converting the bytes into the appropriate form
+for the C API, also it gives you more _Swifty_ typed return values, no _char *_.
 
 Actually it has two methods:
 - `recogniseBy(data:)`
@@ -20,7 +20,6 @@ Actually it has two methods:
 
 Also, you can set how many plates you want it to discover at max. You can see an example of that below.
 
-So the keyword is: _convenience_, and _usability_. Which is straight the opposite that we can say about the C api and `OpenAlprWrapper` of mine.
 
 # Example usage
 

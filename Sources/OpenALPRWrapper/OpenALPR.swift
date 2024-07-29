@@ -39,7 +39,7 @@ open class OpenALPR {
     @OneOrMore public var maxRecognisablePlateCount {
         didSet {
             SetTopN(alprInstance, Int32(maxRecognisablePlateCount))
-            print("Max recognisable plate number has been canged from \(oldValue) to \(maxRecognisablePlateCount)")
+            print("Max recognisable plate number has been changed from \(oldValue) to \(maxRecognisablePlateCount)")
         }
     }
     
